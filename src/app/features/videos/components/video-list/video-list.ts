@@ -12,7 +12,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-const apiKey = environment.ytApiKey;
+const apiKey = environment.YOUTUBE_API_KEY;
 
 @Component({
   selector: 'app-video-list',
