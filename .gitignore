@@ -1,8 +1,6 @@
 # Variables de entorno y archivos sensibles
 .env
-# Ignora solo el environment de producción (sensible)
-src/environments/production/environments.ts
-src/environments/production/environment.ts
+src/environments/environment.prod.ts
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
