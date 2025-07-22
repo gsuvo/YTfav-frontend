@@ -5,6 +5,9 @@ dotenv.config();
 
 module.exports = {
   plugins: [
-    new webpack.EnvironmentPlugin(['RECAPTCHA_SITE_KEY', 'YOUTUBE_API_KEY'])
+    new webpack.EnvironmentPlugin({
+      RECAPTCHA_SITE_KEY: '',
+      YOUTUBE_API_KEY: ''
+    })
   ]
 };
