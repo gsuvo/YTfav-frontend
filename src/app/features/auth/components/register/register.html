@@ -1,0 +1,43 @@
+<div class="register-container">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="register-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" required>
+        <mat-error *ngIf="form.get('username')?.hasError('required')">Usuario requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required type="email">
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Email requerido</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Formato inválido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" required type="password">
+        <mat-error *ngIf="form.get('password')?.hasError('required')">Contraseña requerida</mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">Mínimo 6 caracteres</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirmar contraseña</mat-label>
+        <input matInput formControlName="confirmPassword" required type="password">
+        <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">Confirmación requerida</mat-error>
+        <mat-error *ngIf="form.errors?.['passwordMismatch']">Las contraseñas no coinciden</mat-error>
+      </mat-form-field>
+      
+      <div class="password-status">
+        <span [class.valid]="passwordMinLength">✔ Mínimo 6 caracteres</span>
+        <span [class.valid]="passwordHasUpper">✔ Una mayúscula</span>
+        <span [class.valid]="passwordHasLower">✔ Una minúscula</span>
+        <span [class.valid]="passwordHasNumber">✔ Un número</span>
+        <span [class.valid]="passwordsMatch">✔ Confirmar contraseña</span>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading || form.invalid">Registrarse</button>
+    </form>
+  </mat-card>
+</div>

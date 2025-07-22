@@ -1,0 +1,34 @@
+<div class="favorites-container">
+  <h2><mat-icon>favorite</mat-icon> Mis favoritos</h2>
+  <div *ngIf="loading()" style="text-align:center; margin:2rem 0; color:#888;">
+    <mat-icon>hourglass_empty</mat-icon> Cargando favoritos...
+  </div>
+  <div *ngIf="!loading() && favorites().length === 0" style="text-align:center; margin:2rem 0; color:#888;">
+    <mat-icon>info</mat-icon> No tienes videos favoritos guardados.
+  </div>
+  <div style="max-width: 700px; margin: 0 auto 2rem auto;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Buscar en favoritos</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (input)="onSearchChange(getInputValue($event))" placeholder="Buscar por título..." />
+    </mat-form-field>
+  </div>
+  <div class="favorites-list">
+    <mat-card *ngFor="let fav of filteredFavorites()" class="favorite-card" [class.preview-active]="fav.preview" (mouseenter)="fav.preview = true" (mouseleave)="fav.preview = false">
+      <div class="video-preview-container">
+        <img *ngIf="!fav.preview" mat-card-image [src]="fav.thumbnail" [alt]="fav.title" />
+        <div *ngIf="fav.preview" class="video-iframe-wrapper">
+          <iframe width="100%" height="180" [src]="('https://www.youtube.com/embed/' + fav.videoId + '?autoplay=1&mute=1') | safeUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <mat-card-title>{{ fav.title }}</mat-card-title>
+      <mat-card-actions>
+        <a mat-icon-button color="primary" [href]="'https://www.youtube.com/watch?v=' + fav.videoId" target="_blank" matTooltip="Ver en YouTube">
+          <mat-icon>play_circle</mat-icon>
+        </a>
+        <button mat-icon-button color="warn" (click)="removeFavorite(fav.videoId)" matTooltip="Quitar de favoritos">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

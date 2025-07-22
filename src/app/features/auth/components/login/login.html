@@ -1,0 +1,23 @@
+<div class="auth-form-container" style="max-width: 400px; margin: 3rem auto;">
+  <mat-card>
+    <mat-card-title>Iniciar sesión</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="email" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" name="password" [(ngModel)]="password" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+      </form>
+      <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+        <button mat-button color="accent" type="button" (click)="onForgotPassword()" style="min-width: 0;">
+          <mat-icon>lock_reset</mat-icon> ¿Olvidaste tu contraseña?
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

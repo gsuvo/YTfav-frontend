@@ -1,0 +1,50 @@
+// Estilo uniforme y responsivo para el formulario de registro
+.register-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
+mat-card {
+  background: var(--mdc-theme-surface);
+  border-radius: 12px;
+  box-shadow: var(--mdc-elevation--z2, 0 2px 8px rgba(0,0,0,0.08));
+  padding: 2rem;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1px;
+}
+
+button[mat-button] {
+  width: 100%;
+  margin-top: 1rem;
+  color: #111 !important;
+}
+
+.password-status {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.password-status .valid {
+  color: #388e3c;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .register-container {
+    margin: 1rem;
+    padding: 0;
+  }
+  mat-card {
+    padding: 1rem;
+  }
+  mat-form-field {
+    margin-bottom: 1rem;
+  }
+}

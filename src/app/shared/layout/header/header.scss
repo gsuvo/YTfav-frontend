@@ -1,0 +1,68 @@
+
+@use '@angular/material' as mat;
+
+header.header {
+  @include mat.elevation(2);
+  background: var(--mdc-theme-primary);
+  color: var(--mdc-theme-on-primary);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  gap: 0.5rem;
+}
+
+.app-title {
+  letter-spacing: 1px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.username {
+  font-weight: 500;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+a[mat-button],
+button[mat-button] {
+  color: #111 !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .nav-bar {
+    padding: 0 0.5rem;
+    height: 56px;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .user-info, .auth-buttons {
+    font-size: 0.95rem;
+  }
+}
