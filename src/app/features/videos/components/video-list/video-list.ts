@@ -78,7 +78,7 @@ export class VideoList {
       this.snackBar.open('Por favor inicia sesión para guardar favoritos.', 'Cerrar', { duration: 3000, panelClass: ['snackbar-error'] });
       return;
     }
-    this.http.post('http://localhost:3000/favorites', video, {
+    this.http.post('https://y-tfav-backend.vercel.app/api/favorites', video, {
       headers: {
         Authorization: `Bearer ${token}`
       }

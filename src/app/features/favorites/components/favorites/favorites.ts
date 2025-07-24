@@ -33,7 +33,7 @@ export class Favorites implements OnInit {
       this.loading.set(false);
       return;
     }
-    this.http.get<any[]>('http://localhost:3000/favorites', {
+    this.http.get<any[]>('https://y-tfav-backend.vercel.app/api/favorites', {
       headers: { Authorization: `Bearer ${token}` }
     }).subscribe({
       next: favs => {
@@ -62,7 +62,7 @@ export class Favorites implements OnInit {
   removeFavorite(videoId: string) {
     const token = localStorage.getItem('token');
     if (!token) return;
-    this.http.delete(`http://localhost:3000/favorites/${videoId}`, {
+    this.http.delete(`https://y-tfav-backend.vercel.app/api/favorites/${videoId}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).subscribe({
       next: () => {
