@@ -88,10 +88,16 @@ export class Register {
       }
       return;
     }
-    if (!this.recaptchaToken) {
+    // Obtener el token del widget clásico
+    let token = null;
+    try {
+      token = window['grecaptcha']?.getResponse();
+    } catch {}
+    if (!token) {
       this.snackBar.open('Completa el reCAPTCHA', 'Cerrar', { duration: 3000 });
       return;
     }
+    this.recaptchaToken = token;
     this.loading = true;
     // Registro y login automático para mostrar el usuario en el header
     const { username, email, password } = this.form.value;
