@@ -1,3 +1,15 @@
+// Estilo para el recaptcha
+.recaptcha-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 1rem 0;
+}
+
+re-captcha {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 // Estilo uniforme y responsivo para el formulario de registro
 .register-container {
   max-width: 400px;

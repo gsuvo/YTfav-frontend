@@ -1,4 +1,3 @@
-console.log('API_URL en build:', process.env.apiUrl);
 const fs = require('fs');
 const path = require('path');
 

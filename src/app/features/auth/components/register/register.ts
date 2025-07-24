@@ -10,10 +10,13 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../../environments/environment.prod';
+import { RecaptchaModule } from 'ng-recaptcha-2';
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
+    RecaptchaModule,
     CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -27,6 +30,8 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrl: './register.scss'
 })
 export class Register {
+  recaptchaSiteKey = environment.RECAPTCHA_SITE_KEY;
+  recaptchaToken: string | null = null;
   form: FormGroup;
   loading = false;
 
@@ -44,7 +49,10 @@ export class Register {
       confirmPassword: ['', Validators.required]
     }, { validators: this.passwordsMatchValidator });
   }
-
+  onRecaptchaResolved(token: string | null) {
+    this.recaptchaToken = token;
+    this.cdr.markForCheck();
+  }
   passwordsMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const confirm = form.get('confirmPassword')?.value;
@@ -80,10 +88,14 @@ export class Register {
       }
       return;
     }
+    if (!this.recaptchaToken) {
+      this.snackBar.open('Completa el reCAPTCHA', 'Cerrar', { duration: 3000 });
+      return;
+    }
     this.loading = true;
     // Registro y login automático para mostrar el usuario en el header
     const { username, email, password } = this.form.value;
-    this.auth.register({ username, email, password })
+    this.auth.register({ username, email, password, recaptchaToken: this.recaptchaToken })
       .pipe(finalize(() => {
         this.loading = false;
         this.cdr.detectChanges();
