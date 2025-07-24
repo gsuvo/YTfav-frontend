@@ -1,4 +1,4 @@
-console.log('API_URL en build:', process.env.API_URL);
+console.log('API_URL en build:', process.env.apiUrl);
 const fs = require('fs');
 const path = require('path');
 
@@ -6,7 +6,7 @@ const envProdPath = path.join(__dirname, '../src/environments/environment.prod.t
 
 const content = `export const environment = {
   production: true,
-  apiUrl: '${process.env.API_URL || ''}',
+  apiUrl: '${process.env.apiUrl || ''}',
   YOUTUBE_API_KEY: '${process.env.YOUTUBE_API_KEY || ''}',
   RECAPTCHA_SITE_KEY: '${process.env.RECAPTCHA_SITE_KEY || ''}'
 };
