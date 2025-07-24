@@ -1,3 +1,6 @@
+console.log('API_URL en build:', process.env.apiUrl);
+console.log('RECAPTCHA_SITE_KEY en build:', process.env.RECAPTCHA_SITE_KEY);
+
 const fs = require('fs');
 const path = require('path');
 

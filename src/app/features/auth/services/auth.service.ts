@@ -13,8 +13,6 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    // TEMP: Log para depuración en producción
-    console.log('API URL en producción:', this.apiUrl);
     // Si hay token, cargar usuario al iniciar
     const token = this.getToken();
     if (token) {
