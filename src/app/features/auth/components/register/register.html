@@ -37,11 +37,12 @@
         <span [class.valid]="passwordsMatch">✔ Confirmar contraseña</span>
       </div>
 
+
       <div class="recaptcha-wrapper">
-        <re-captcha
-          [siteKey]="recaptchaSiteKey"
-          (resolved)="onRecaptchaResolved($event)">
-        </re-captcha>
+        <div
+          class="g-recaptcha"
+          [attr.data-sitekey]="recaptchaSiteKey">
+        </div>
       </div>
 
       <button mat-raised-button color="primary" type="submit" [disabled]="loading || form.invalid">Registrarse</button>
